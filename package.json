@@ -1,0 +1,19 @@
+{
+  "name": "student-directory-api-ui",
+  "version": "1.0.0",
+  "description": "Student Directory API + UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GioAceto/Student-Directory-API-UI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GioAceto/Student-Directory-API-UI/issues"
+  },
+  "homepage": "https://github.com/GioAceto/Student-Directory-API-UI#readme"
+}
