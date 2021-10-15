@@ -2,14 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const StudentsContainer = () => {
-  return (
-    <div className="students-container" >
-      <Student />
-    </div>
-  )
-}
-
-const Student = () => {
   const [student, setStudent] = useState([])
 
   useEffect(() => {
@@ -17,14 +9,12 @@ const Student = () => {
       let fetch = await axios.get('http://localhost:1800/api/students')
 
       setStudent(fetch.data)
-      console.log(fetch.data[0])
     }
-
     fetchStudents()
   }, [])
 
   return (
-    <>
+    <div className="students-container" >
       {student.map(student => {
         return (
           <div className="profile">
@@ -41,7 +31,7 @@ const Student = () => {
           </div>
         )
       })}
-    </>
+    </div>
   )
 }
 
