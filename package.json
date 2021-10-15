@@ -4,7 +4,16 @@
   "description": "Student Directory API + UI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev:client:build && ./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon index.js",
+    "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
+    "dev:client": "cd client && npm start",
+    "dev:client:build": "cd client && npm run build",
+    "lint": "./node_modules/.bin/eslint --format codeframe .",
+    "lint:fix": "./node_modules/.bin/eslint --fix --format codeframe .",
+    "prod:migrate": "sequelize db:migrate --env production --config ./config/sequelize.js",
+    "build": "npm run prod:migrate && cd client && npm install && npm run build",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +24,19 @@
   "bugs": {
     "url": "https://github.com/GioAceto/Student-Directory-API-UI/issues"
   },
-  "homepage": "https://github.com/GioAceto/Student-Directory-API-UI#readme"
+  "homepage": "https://github.com/GioAceto/Student-Directory-API-UI#readme",
+  "devDependencies": {
+    "concurrently": "^6.3.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.0.1",
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.1",
+    "sequelize": "^6.7.0",
+    "sequelize-cli": "^6.2.0"
+  }
 }
