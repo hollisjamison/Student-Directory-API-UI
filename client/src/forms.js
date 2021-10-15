@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const AddStudentForm = () => {
   return (
-    <form className="addForm">
+    <form className="addForm" action="/api/students" method="POST">
       <div className="input-container">
         <label htmlFor="add-name">Name:</label>
         <input type="text" id="add-name" name="name" />
@@ -26,7 +26,7 @@ export const AddStudentForm = () => {
 
 export const UpdateStudentForm = () => {
   return (
-    <form className="updateForm">
+    <form className="updateForm" action="/api/students" method="POST">
       <div className="input-container">
         <label htmlFor="update-name">Name:</label>
         <input type="text" id="update-name" name="name" />
@@ -52,7 +52,7 @@ export const UpdateStudentForm = () => {
 
 export const DeleteStudentForm = () => {
   return (
-    <form className="deleteForm">
+    <form className="deleteForm" action="/api/students" method="POST">
       <div className="input-container">
         <label htmlFor="delete-id">Student ID:</label>
         <input type="text" maxLength="6" id="delete-id" />
