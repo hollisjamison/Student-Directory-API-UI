@@ -1,11 +1,27 @@
 import React, { useState } from 'react'
 
 export const AddStudentForm = () => {
+  const [data, setData] = useState({
+    name: "",
+    age: "",
+    address: "",
+    gpa: "",
+    major: "",
+    image: ""
+  })
+
+  const handleChange = (e) => {
+    const newData = { ...data }
+    newData[e.target.name] = e.target.value
+    setData(newData)
+    console.log(newData)
+  }
+
   return (
     <form className="addForm" action="/api/students" method="POST">
       <div className="input-container">
         <label htmlFor="add-name">Name:</label>
-        <input type="text" id="add-name" name="name" />
+        <input onChange={(e) => handleChange(e)} type="text" id="add-name" name="name" value={data.name} />
         <label htmlFor="add-age">Age:</label>
         <input type="number" step="1" min="14" max="100" id="add-age" name="age" />
         <label htmlFor="add-address">Address:</label>

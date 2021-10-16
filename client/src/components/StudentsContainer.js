@@ -17,7 +17,7 @@ const StudentsContainer = () => {
     <div className="students-container" >
       {student.map(student => {
         return (
-          <div className="profile">
+          <div key={student.id} className="profile">
             <h2>{student.name}</h2>
             <img className="avatar" src={require("../assets/" + student.image).default} alt="student pic"></img>
             <div className="data-list">
