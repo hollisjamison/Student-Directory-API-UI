@@ -1,26 +1,30 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 
 export const AddStudentForm = () => {
-  const [data, setData] = useState({
-    name: "",
-    age: "",
-    address: "",
-    gpa: "",
-    major: "",
-    image: ""
-  })
+  const formData = useRef(null)
 
-  const handleChange = (e) => {
-    const newData = { ...data, [e.target.name]: e.target.value }
-  
-    setData(newData)
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    // Destructure current values from the ref
+    const { current } = formData
+    // Create a student object on the fly with the ref
+    const student = {
+      name: current.name.value,
+      age: current.age.value,
+      address: current.address.value,
+      gpa: current.gpa.value,
+      major: current.major.value,
+      image: current.image.value
+    }
+    // Axios here
+    console.log(student)
   }
 
   return (
-    <form className="addForm" action="/api/students" method="POST">
+    <form ref={formData} className="addForm">
       <div className="input-container">
         <label htmlFor="add-name">Name:</label>
-        <input onChange={(e) => handleChange(e)} type="text" id="add-name" name="name" value={data.name} />
+        <input type="text" id="add-name" name="name" />
         <label htmlFor="add-age">Age:</label>
         <input type="number" step="1" min="14" max="100" id="add-age" name="age" />
         <label htmlFor="add-address">Address:</label>
@@ -33,7 +37,7 @@ export const AddStudentForm = () => {
         <input type="text" id="add-image" name="image" />
       </div>
       <div className="submit-container">
-        <button className="submit" type="submit">Submit Change</button>
+        <button className="submit" type="submit" onClick={handleSubmit}>Submit Change</button>
       </div>
     </form>
   )
