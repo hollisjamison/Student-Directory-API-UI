@@ -11,10 +11,9 @@ export const AddStudentForm = () => {
   })
 
   const handleChange = (e) => {
-    const newData = { ...data }
-    newData[e.target.name] = e.target.value
+    const newData = { ...data, [e.target.name]: e.target.value }
+  
     setData(newData)
-    console.log(newData)
   }
 
   return (
